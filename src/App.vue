@@ -65,6 +65,22 @@
         </div>
       </header>
       <router-view />
+      <footer>Design and Created 2023 | Cool-ore</footer>
+
+      <v-dialog
+        class="home__dialog"
+        persistent
+        v-model="state.textToSpeech.dialog"
+      >
+        <v-card>
+          <v-card-text> Do you want to read it for you? </v-card-text>
+          <v-card-actions>
+            <v-btn color="error" @click="handleDialog">No, thank you</v-btn>
+            <v-spacer></v-spacer>
+            <v-btn color="success" @click="allowSpeaking">Yes, please</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
     </v-main>
   </v-app>
 </template>
@@ -78,7 +94,6 @@ export default defineComponent({
   name: "App",
   setup() {
     const { state, commit } = useStore();
-    // const isListening = ref(false);
     const isNavOpen = ref(false);
 
     function changeColor() {
@@ -101,22 +116,27 @@ export default defineComponent({
       isNavOpen.value = !isNavOpen.value;
     }
 
-    function read(e) {
-      console.log(e);
+    function allowSpeaking() {
+      commit("textToSpeech/allowSpeaking");
+      commit("textToSpeech/textToSpeech", {
+        event: state.textToSpeech.event,
+      });
+    }
+
+    function handleDialog(e) {
+      commit("textToSpeech/handleDialog", { event: e });
     }
 
     return {
       changeColor,
       textToSpeech,
       navigation,
-      read,
+      allowSpeaking,
+      handleDialog,
       state,
       isNavOpen,
     };
   },
-  data: () => ({
-    //
-  }),
 });
 </script>
 
@@ -178,9 +198,6 @@ export default defineComponent({
 
 @media (min-width: $min-width-tablet) {
   .header {
-    // &__inner {
-    //   margin: 0 4rem;
-    // }
     &__nav {
       @include flex($dir: row, $justify: space-around);
       margin-right: 1rem;

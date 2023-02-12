@@ -1,5 +1,6 @@
 import { createStore } from "vuex";
 import { textToSpeech } from "./modules/textToSpeech";
+import { colorblind } from "./modules/colorblindTypes";
 
 export default createStore({
   state: {},
@@ -8,5 +9,6 @@ export default createStore({
   actions: {},
   modules: {
     textToSpeech,
+    colorblind,
   },
 });

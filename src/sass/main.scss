@@ -68,6 +68,16 @@ $min-width-desktop: 60rem;
     }
   }
 
+  footer {
+    @include flex();
+    @include font(0.85rem, $weight: 300);
+    margin-top: 2rem;
+    height: 2rem;
+
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+  }
+
   .router-link-active {
     text-decoration: underline;
   }

@@ -15,26 +15,11 @@
         <img :src="require('@/assets/img/my_image.png')" alt="" />
       </div>
     </section>
-
-    <v-dialog
-      class="home__dialog"
-      persistent
-      v-model="state.textToSpeech.dialog"
-    >
-      <v-card>
-        <v-card-text> Do you want to read it for you? </v-card-text>
-        <v-card-actions>
-          <v-btn color="error" @click="handleDialog">No, thank you</v-btn>
-          <v-spacer></v-spacer>
-          <v-btn color="success" @click="allowSpeaking">Yes, please</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
   </div>
 </template>
 
 <script>
-import { defineComponent, ref } from "vue";
+import { defineComponent } from "vue";
 import { useStore } from "vuex";
 
 // Components
@@ -53,20 +38,12 @@ export default defineComponent({
       });
     }
 
-    function allowSpeaking() {
-      commit("textToSpeech/allowSpeaking");
-      commit("textToSpeech/textToSpeech", {
-        event: state.textToSpeech.event,
-      });
-    }
-
     function handleDialog(e) {
       commit("textToSpeech/handleDialog", { event: e });
     }
 
     return {
       textToSpeech,
-      allowSpeaking,
       handleDialog,
       state,
     };
@@ -113,7 +90,7 @@ export default defineComponent({
     p {
       @include font(
         clamp(0.95rem, 1.5vw, 1rem),
-        $weight: 300,
+        $weight: 400,
         $clr: var(--secondary-color)
       );
       line-height: 1.5;

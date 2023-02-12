@@ -16,6 +16,7 @@ export default {
 <style lang="scss" scoped>
 .article {
   @include flex($dir: column);
+  height: 30rem;
 }
 
 .icon {
