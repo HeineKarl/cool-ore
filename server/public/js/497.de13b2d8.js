@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkcool_ore"]=self["webpackChunkcool_ore"]||[]).push([[497],{497:function(e,t,n){n.r(t),n.d(t,{default:function(){return l}});var r=n(3396);function a(e,t,n,a,o,u){return(0,r.wg)(),(0,r.iD)("div",null,"Here is the Appearance")}var o=n(65),u=n(2483),c=(0,r.aZ)({setup(){const{state:e,commit:t,dispatch:n}=(0,o.oR)(),r=(0,u.yj)();return n("generateToken",{routename:r.name}),{state:e}}}),s=n(89);const i=(0,s.Z)(c,[["render",a]]);var l=i}}]);
+//# sourceMappingURL=497.de13b2d8.js.map
