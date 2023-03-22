@@ -2,6 +2,7 @@ import { createStore } from "vuex";
 import { textToSpeech } from "./modules/textToSpeech";
 import { colorblind } from "./modules/colorblindTypes";
 import { navigationList } from "./modules/navigationList";
+import { profile } from "./modules/profile";
 
 import router from "@/router";
 import axios from "axios";
@@ -167,7 +168,7 @@ const store = createStore({
     },
   },
   getters: {},
-  modules: { textToSpeech, colorblind, navigationList },
+  modules: { textToSpeech, colorblind, navigationList, profile },
 });
 
 export default store;

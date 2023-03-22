@@ -70,6 +70,7 @@ export default defineComponent({
     commit("navigationList/handleAccountList", userId);
 
     function verifyUser() {
+      console.log("verify");
       dispatch("verifyUser");
     }
     return {
