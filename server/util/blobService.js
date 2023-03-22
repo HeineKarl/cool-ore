@@ -6,4 +6,4 @@ module.exports = function convert(image) {
   return blob;
 };
 
-// img.src = 'data:image/jpeg;base64,' + base64;
+//  img.src = 'data:image/jpeg;base64,' + base64;
