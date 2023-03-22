@@ -21,6 +21,40 @@ const { refreshTime, nextWeek } = require("../../util/timeService");
 const validation = require("../../util/validation");
 const { properCase } = require("../../util/textService");
 
+router.put("/user-profile", async (req, res) => {
+  console.log("User Profile Update".underline.green);
+
+  try {
+    // Getting the data from the req body
+    const {
+      id,
+      username,
+      userImage,
+      firstname,
+      lastname,
+      age,
+      gender,
+      colorVisionType,
+      bio,
+    } = req.body;
+    console.log(req.body);
+
+    // Update the Data in the Database
+    await knexUser.updateData(id, {
+      username,
+      userImage,
+      firstname,
+      lastname,
+      age,
+      gender,
+      colorVisionType,
+      bio,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 router.post("/logout", async (req, res) => {
   console.log("Logout Router".underline.green);
   try {
@@ -48,7 +82,19 @@ router.post("/token", validation, async (req, res) => {
     const time = refreshTime(expired, process.env.EXPIRATION_TIME);
 
     const user = await knexUser.getDataById(req.cookieToken.id);
-    const { id, username, userImage, email, refreshToken } = user[0];
+    const {
+      id,
+      username,
+      firstname,
+      lastname,
+      age,
+      gender,
+      colorVisionType,
+      bio,
+      userImage,
+      email,
+      refreshToken,
+    } = user[0];
 
     // Validation
     if (refreshToken == null) {
@@ -79,6 +125,12 @@ router.post("/token", validation, async (req, res) => {
       username,
       userImage,
       email,
+      firstname,
+      lastname,
+      age,
+      gender,
+      colorVisionType,
+      bio,
     };
 
     if (now >= time) {
